@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <title>Test de Conducir Clase B - Chile</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  #app {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+  }
+
+  .question-style {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .options {
+    margin-top: 10px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+  }
+
+  button {
+    background: #fd1d1d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  button:hover {
+    background: #fcb045;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+  }
+
+  .question-container {
+    margin-bottom: 20px;
+  }
+
+  .leaderboard-container {
+    margin-top: 20px;
+  }
+
+  .leaderboard-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .rank {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .name {
+    flex-grow: 1;
+  }
+
+  .score {
+    margin-right: 10px;
+  }
+
+  .date {
+    font-size: 0.9em;
+    color: #ccc;
+  }
+</style>
+</head>
+<body>
+  <div id="app">
+    <h1>Test de Conducir Clase B - Chile</h1>
+    <form id="test-form">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" required>
+      </div>
+      <div id="questions" class="question-container">
+      
+      </div>
+      <button type="submit" id="finalize-btn">Finalizar prueba</button>
+    </form>
+
+    <div id="result" class="hidden">
+      <h2>Resultado</h2>
+      <p>Nombre: <span id="res-name"></span></p>
+      <p>Puntaje: <span id="res-score"></span> / 35</p>
+      <button id="delete-btn">Borrar prueba y empezar de nuevo</button>
+      <button id="show-leaderboard-btn">Ver Leaderboard</button>
+    </div>
+
+    <div id="leaderboard" class="hidden">
+      <h2>🏆 Leaderboard</h2>
+      <div id="leaderboard-list" class="leaderboard-container">
+       
+        <div class="leaderboard-item top-score">
+          <span class="rank">1</span>
+          <span class="name">Juan</span>
+          <span class="score">35</span>
+          <span class="date">2025-06-05</span>
+        </div>
+      </div>
+      <button id="back-to-result-btn">Volver al resultado</button>
+      <button id="new-test-btn">Nuevo test</button>
+      <button id="clear-leaderboard-btn">Borrar Leaderboard</button>
+    </div>
+
+
+    <div id="edit-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Editar Nombre</h3>
+        <div class="form-group">
+          <label for="edit-name">Nuevo nombre:</label>
+          <input type="text" id="edit-name" maxlength="50" required>
+        </div>
+        <div class="modal-buttons">
+          <button id="save-edit-btn">Guardar</button>
+          <button id="cancel-edit-btn">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
